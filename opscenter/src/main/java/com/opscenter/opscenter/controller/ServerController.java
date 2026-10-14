@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.opscenter.opscenter.dto.ServerResponse;
 import com.opscenter.opscenter.service.ServerService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import com.opscenter.opscenter.dto.ServerRequest;
+import jakarta.validation.Valid;
 
 @RestController 
 public class ServerController {
@@ -20,6 +24,11 @@ public class ServerController {
 @GetMapping("/serverlist")
 public List<ServerResponse> getServers() {
     return serverService.getServers();
+}
+
+@PostMapping("/serverlist")
+public ServerResponse addServer(@Valid @RequestBody ServerRequest serverRequest) {
+    return serverService.addServer(serverRequest);
 }
 
 
