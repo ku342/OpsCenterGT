@@ -25,5 +25,9 @@ public ServerResponse addServer(ServerRequest serverRequest) {
 }
 
 
+public boolean deleteServer(Long id) {
+return servers.removeIf(server -> server.id() == id);
+}
+
 
 }
