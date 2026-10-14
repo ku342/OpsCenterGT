@@ -11,3 +11,4 @@ public class StatusService{
         return new StatusResponse("OpsCenter", "OK");
     }
 }
+
