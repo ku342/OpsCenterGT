@@ -1,10 +1,11 @@
 package com.opscenter.opscenter.service;
 import com.opscenter.opscenter.dto.ServerResponse;
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import com.opscenter.opscenter.dto.ServerRequest;
-import org.springframework.web.bind.annotation.RequestBody;
+
 @Service 
 public class ServerService {
 
@@ -18,7 +19,7 @@ public class ServerService {
 
 
 public ServerResponse addServer(ServerRequest serverRequest) {
-    ServerResponse newServer = new ServerResponse(nextId++, serverRequest.name(), serverRequest.host());
+    ServerResponse newServer = new ServerResponse(nextId++, serverRequest.name(), serverRequest.host(), serverRequest.port());
     servers.add(newServer);
     return newServer;
 
@@ -27,6 +28,21 @@ public ServerResponse addServer(ServerRequest serverRequest) {
 
 public boolean deleteServer(Long id) {
 return servers.removeIf(server -> server.id() == id);
+}
+
+public Optional<ServerResponse> findServerById(long id) {
+for (ServerResponse server : servers) {
+    if (server.id() == id) {
+        return Optional.of(server);
+    }
+
+    
+}
+        return Optional.empty();
+
+
+
+
 }
 
 
