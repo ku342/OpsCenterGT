@@ -35,15 +35,16 @@ for (ServerResponse server : servers) {
     if (server.id() == id) {
         return Optional.of(server);
     }
-
-    
 }
         return Optional.empty();
-
-
-
-
 }
+
+
+
+
+
+
+
 
 
 }
